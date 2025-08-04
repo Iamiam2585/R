@@ -71,8 +71,7 @@ field_blank_data_vis_quartz <- all_data %>%
   filter(qualifier3 != "MD" | is.na(qualifier3)) %>% #same as above for qualifier3 column
   filter(qualifier4 != "MD" | is.na(qualifier4)) %>% 
   filter(date >= mdy("01-01-2023") & date <= mdy("12-31-2023")) #same as above for qualifier4 columnilter(is.na(null_code)) 
-  
-  ))
+
 field_blank_data_vis_quartz
 view(field_blank_data_vis_quartz)
 str(field_blank_data_vis_quartz)
@@ -92,6 +91,6 @@ ggplot(field_blank_data_vis_quartz, aes( x = date, y = value, color = transactio
 
 organic_carbon_sample_data <- field_blank_data_vis_quartz %>% 
   filter(parameter == "Organic Carbon") %>% 
-  filter(transaction+type == "Sample")
+  filter(transaction_type == "Sample")
 ggplot(organic_carbon_sample_data, aes(x = site, y = value)) + 
   geom_boxplot() 
